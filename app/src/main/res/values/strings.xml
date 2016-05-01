@@ -1,15 +1,20 @@
 <resources>
   <string name="app_name">D&amp;D Roller</string>
 
+  <!-- Accessibility-->
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <string name="navigation_drawer_close">Close navigation drawer</string>
+
+  <!-- Fragments -->
   <string name="rolls_fragment_title">Rolls</string>
   <string name="powers_fragment_title">Powers</string>
   <string name="weapons_fragment_title">Weapons</string>
   <string name="modifiers_fragment_title">Modifiers</string>
   <string name="stats_fragment_title">Stats</string>
 
+  <!-- Settings -->
   <string name="about">About</string>
 
-  <!-- Accessibility-->
-  <string name="navigation_drawer_open">Open navigation drawer</string>
-  <string name="navigation_drawer_close">Close navigation drawer</string>
+  <!-- Temp strings -->
+  <string name="unimplemented">Unimplemented :(</string>
 </resources>

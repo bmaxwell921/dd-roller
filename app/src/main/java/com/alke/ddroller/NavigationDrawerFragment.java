@@ -20,6 +20,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.alke.ddroller.fragments.DrawerFragmentFactory;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -53,17 +56,20 @@ public class NavigationDrawerFragment extends Fragment {
   private ListView drawerListView;
   private View fragmentContainerView;
 
-  private int currentSelectedPosition = 0;
+  // Default to the rolls view
+  private int currentSelectedPosition = 1;
   private boolean fromSavedInstanceState;
   private boolean userLearnedDrawer;
 
-  public NavigationDrawerFragment() {
-  }
+  private DrawerFragmentFactory drawerFragmentFactory;
+  private String[] fragmentTitles;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
+    drawerFragmentFactory = new DrawerFragmentFactory();
+    fragmentTitles = getResources().getStringArray(R.array.navigation_drawer_options);
     // Read in the flag indicating whether or not the user has demonstrated awareness of the
     // drawer. See PREF_USER_LEARNED_DRAWER for details.
     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -100,9 +106,29 @@ public class NavigationDrawerFragment extends Fragment {
         getActionBar().getThemedContext(),
         android.R.layout.simple_list_item_activated_1,
         android.R.id.text1,
-        getResources().getStringArray(R.array.navigation_drawer_options)));
+        fragmentTitles));
     drawerListView.setItemChecked(currentSelectedPosition, true);
     return drawerListView;
+  }
+
+  private void selectItem(int position) {
+    Fragment newFragment = drawerFragmentFactory.newDrawerFragment(position);
+    // TODO: Remove after all fragments are implemented
+    if (newFragment == null) {
+      Toast.makeText(getActivity(), R.string.unimplemented, Toast.LENGTH_SHORT).show();
+    } else {
+      currentSelectedPosition = position;
+    }
+    getActionBar().setTitle(fragmentTitles[currentSelectedPosition]);
+    if (drawerListView != null) {
+      drawerListView.setItemChecked(currentSelectedPosition, true);
+    }
+    if (drawerLayout != null) {
+      drawerLayout.closeDrawer(fragmentContainerView);
+    }
+    if (callbacks != null && newFragment != null) {
+      callbacks.navigateToFragment(fragmentTitles[currentSelectedPosition], newFragment);
+    }
   }
 
   public boolean isDrawerOpen() {
@@ -112,7 +138,7 @@ public class NavigationDrawerFragment extends Fragment {
   /**
    * Users of this fragment must call this method to set up the navigation drawer interactions.
    *
-   * @param fragmentId   The android:id of this fragment in its activity's layout.
+   * @param fragmentId The android:id of this fragment in its activity's layout.
    * @param drawerLayout The DrawerLayout containing this fragment's UI.
    */
   public void setUp(int fragmentId, DrawerLayout drawerLayout) {
@@ -183,19 +209,6 @@ public class NavigationDrawerFragment extends Fragment {
     this.drawerLayout.setDrawerListener(drawerToggle);
   }
 
-  private void selectItem(int position) {
-    currentSelectedPosition = position;
-    if (drawerListView != null) {
-      drawerListView.setItemChecked(position, true);
-    }
-    if (drawerLayout != null) {
-      drawerLayout.closeDrawer(fragmentContainerView);
-    }
-    if (callbacks != null) {
-      callbacks.onNavigationDrawerItemSelected(position);
-    }
-  }
-
   @Override
   public void onAttach(Activity activity) {
     super.onAttach(activity);
@@ -253,7 +266,8 @@ public class NavigationDrawerFragment extends Fragment {
     ActionBar actionBar = getActionBar();
     actionBar.setDisplayShowTitleEnabled(true);
     actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-    actionBar.setTitle(R.string.app_name);
+    actionBar.setTitle(isDrawerOpen() ? getResources().getString(R.string.app_name)
+        : fragmentTitles[currentSelectedPosition]);
   }
 
   private ActionBar getActionBar() {
@@ -266,7 +280,10 @@ public class NavigationDrawerFragment extends Fragment {
   public interface NavigationDrawerCallbacks {
     /**
      * Called when an item in the navigation drawer is selected.
+     *
+     * @param fragmentTitle the title to show in the actionBar for the new fragment.
+     * @param fragment the fragment to show.
      */
-    void onNavigationDrawerItemSelected(int position);
+    void navigateToFragment(String fragmentTitle, Fragment fragment);
   }
 }
