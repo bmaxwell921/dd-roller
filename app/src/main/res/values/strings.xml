@@ -1,14 +1,15 @@
 <resources>
-    <string name="app_name">D&amp;D Roller</string>
+  <string name="app_name">D&amp;D Roller</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+  <string name="rolls_fragment_title">Rolls</string>
+  <string name="powers_fragment_title">Powers</string>
+  <string name="weapons_fragment_title">Weapons</string>
+  <string name="modifiers_fragment_title">Modifiers</string>
+  <string name="stats_fragment_title">Stats</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+  <string name="about">About</string>
 
-    <string name="action_example">Example action</string>
-
-    <string name="action_settings">Settings</string>
+  <!-- Accessibility-->
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
