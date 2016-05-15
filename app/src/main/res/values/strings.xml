@@ -32,6 +32,7 @@
 
   <!-- Powers strings -->
   <string name="powers_action_type">Action Type</string>
+  <!-- TODO: Nope this is wrong. Should be like 1[W] + DEX + CHA-->
   <string name="powers_hit">Hit (e.g. 1d6)</string>
   <string name="powers_name">Name</string>
   <string name="powers_target">Target</string>

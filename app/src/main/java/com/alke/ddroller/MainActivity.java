@@ -1,27 +1,22 @@
 package com.alke.ddroller;
 
 import android.app.Activity;
-
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.alke.ddroller.fragments.DrawerFragmentFactory;
+import com.alke.ddroller.fragments.AddPowerFragment;
+import com.alke.ddroller.model.Power;
 
 /**
  * The MainActivity for the app. This Activity is used to simply display the proper fragment,
  * based on what option the user selects in the navigation drawer.
  */
 public class MainActivity extends Activity
-    implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+    implements NavigationDrawerFragment.NavigationDrawerCallbacks, AddPowerFragment.PowerSaver {
 
   /**
    * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -65,5 +60,14 @@ public class MainActivity extends Activity
     }
 
     return super.onOptionsItemSelected(item);
+  }
+
+  @Override
+  public void savePower(Power power) {
+    if (!power.isValid()) {
+      Toast.makeText(this, "That's not valid, idiot!", Toast.LENGTH_SHORT).show();
+      return;
+    }
+    // TODO save to db, kill the fragment
   }
 }
