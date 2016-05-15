@@ -1,0 +1,9 @@
+Databases:
+    greenDAO - uses protobuf
+        - https://github.com/greenrobot/greenDAO
+    realm - non relational
+        - https://realm.io/news/realm-for-android/
+        - https://github.com/thorbenprimke/realm-recyclerview/blob/master/library/src/main/java/io/realm/RealmBasedRecyclerViewAdapter.java
+
+DI:
+    Dagger 2
