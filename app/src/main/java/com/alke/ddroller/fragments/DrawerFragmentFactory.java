@@ -33,6 +33,9 @@ public class DrawerFragmentFactory {
     if (position == 4) {
       return null;
     }
+    if (position == 5) {
+      return AddPowerFragment.newInstance();
+    }
     throw new IllegalArgumentException("Unrecognized drawer option");
   }
 }

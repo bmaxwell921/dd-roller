@@ -1,6 +1,7 @@
 <resources>
   <string name="app_name">D&amp;D Roller</string>
 
+
   <!-- Accessibility-->
   <string name="navigation_drawer_open">Open navigation drawer</string>
   <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -11,9 +12,39 @@
   <string name="weapons_fragment_title">Weapons</string>
   <string name="modifiers_fragment_title">Modifiers</string>
   <string name="stats_fragment_title">Stats</string>
+  <string name="testing_fragment_title">(Testing) Add Power</string>
 
   <!-- Settings -->
   <string name="about">About</string>
+
+  <!-- Stat Strings -->
+  <string name="stat_str">STR</string>
+  <string name="stat_con">CON</string>
+  <string name="stat_dex">DEX</string>
+  <string name="stat_int">INT</string>
+  <string name="stat_wis">WIS</string>
+  <string name="stat_cha">CHA</string>
+
+  <string name="stat_ac">AC</string>
+  <string name="stat_fort">FORT</string>
+  <string name="stat_ref">REF</string>
+  <string name="stat_will">WILL</string>
+
+  <!-- Powers strings -->
+  <string name="powers_action_type">Action Type</string>
+  <string name="powers_hit">Hit (e.g. 1d6)</string>
+  <string name="powers_name">Name</string>
+  <string name="powers_target">Target</string>
+  <string name="powers_their_stat">Their Stat</string>
+  <string name="powers_vs">vs</string>
+  <string name="powers_weapon_type">Weapon Type</string>
+  <string name="powers_your_stat">Your Stat</string>
+
+  <string name="powers_action_type_minor_action">Minor Action</string>
+  <string name="powers_action_type_move_action">Move Action</string>
+  <string name="powers_action_type_standard_action">Standard Action</string>
+
+  <string name="powers_save">SAVE</string>
 
   <!-- Temp strings -->
   <string name="unimplemented">Unimplemented :(</string>

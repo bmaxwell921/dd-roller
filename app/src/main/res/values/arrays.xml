@@ -6,5 +6,28 @@
     <item>@string/powers_fragment_title</item>
     <item>@string/weapons_fragment_title</item>
     <item>@string/modifiers_fragment_title</item>
+    <item>@string/testing_fragment_title</item>
+  </string-array>
+
+  <string-array name="powers_action_types">
+    <item>@string/powers_action_type_standard_action</item>
+    <item>@string/powers_action_type_minor_action</item>
+    <item>@string/powers_action_type_move_action</item>
+  </string-array>
+
+  <string-array name="powers_your_stats">
+    <item>@string/stat_str</item>
+    <item>@string/stat_con</item>
+    <item>@string/stat_dex</item>
+    <item>@string/stat_int</item>
+    <item>@string/stat_wis</item>
+    <item>@string/stat_cha</item>
+  </string-array>
+
+  <string-array name="powers_their_stats">
+    <item>@string/stat_ac</item>
+    <item>@string/stat_fort</item>
+    <item>@string/stat_ref</item>
+    <item>@string/stat_will</item>
   </string-array>
 </resources>
